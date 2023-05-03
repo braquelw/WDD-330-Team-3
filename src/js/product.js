@@ -27,6 +27,6 @@ async function addToCartHandler(e) {
 document.getElementById('addToCart').addEventListener('click', addToCartHandler);
 
 // remove item from cart
-document.querySelector('deleteBtn').addEventListener('click', () => {
-  console.log('button clicked');
-})
+// document.querySelector('deleteBtn').addEventListener('click', () => {
+//   console.log('button clicked');
+// })
