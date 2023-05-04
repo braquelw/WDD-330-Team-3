@@ -1,6 +1,6 @@
 # sleepoutside
 
-https://644834fe8a373a1d93b76ffa--gilded-pastelito-dc99c6.netlify.app/index.html
+https://gilded-pastelito-dc99c6.netlify.app/
 
 ## Description
 
