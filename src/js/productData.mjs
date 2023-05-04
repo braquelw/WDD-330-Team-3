@@ -13,6 +13,11 @@ export function getData(category = "tents") {
 }
 
 export async function findProductById(id) {
-  const products = await getData();
-  return products.find((item) => item.Id === id);
+  try {
+    const products = await getData();
+    return products.find((item) => item.Id === id);
+  } catch (err) {
+    console.error(err);
+    return {error: err.message};
+  }
 }

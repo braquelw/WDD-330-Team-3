@@ -1,5 +1,5 @@
-import { setLocalStorage, getLocalStorage } from './utils.mjs';
-import { findProductById } from './productData.mjs';
+import { getParam } from './utils.mjs';
+import productDetails from "./productDetails.mjs";
 
 function addProductToCart(product) {
   // Retrieve the current cart items from local storage
@@ -25,3 +25,8 @@ async function addToCartHandler(e) {
 
 // add listener to Add to Cart button
 document.getElementById('addToCart').addEventListener('click', addToCartHandler);
+
+// remove item from cart
+// document.querySelector('deleteBtn').addEventListener('click', () => {
+//   console.log('button clicked');
+// })
