@@ -1,29 +1,33 @@
 import { getData } from './productData.mjs';
+import { renderListWithTemplate } from './utils.mjs';
 
 export default function productList(selector, category) {
     const container = document.querySelector(selector);
-    getData(category).then((products) => {
-        renderList(products, container)
-    }).
-        catch((error) => console.log.error(error));
+    getData(category)
+        .then((products) => {
+            console.log(products);
+            const filter = products.filter(filterProducts)
+            renderListWithTemplate(productCardTemplate, container, filter);
+        })
+        .catch((error) => console.error(error));
+}
 
-};
-
-// productList.mjs
 function productCardTemplate(product) {
-    return `<li class="product-card">
-    <a href="product_pages/index.html?product=">
-    <img
-      src=""
-      alt="Image of "
-    />
-    <h3 class="card__brand"></h3>
-    <h2 class="card__name"></h2>
-    <p class="product-card__price">$</p></a>
-  </li>`
-};
+    return `
+    <li class="product-card">
+    <a href="${product.Id}">
+      <img
+        src="${product.Image}"
+        alt="Image of ${product.Name}"
+      />
+      <h3 class="card__brand">${product.Brand.Name}</h3>
+      <h2 class="card__name">${product.Name}</h2>
+      <p class="product-card__price">${product.FinalPrice}</p></a
+    >
+    </li>
+    `;
+}
 
-function renderList(list, el) {
-    const htmlStrings = list.map(productCardTemplate);
-    el.insertAdjacentHTML('afterbegin', htmlStrings.join(''));
+function filterProducts(product) {
+    return product.FinalPrice != 179.99
 }
