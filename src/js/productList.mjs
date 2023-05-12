@@ -15,7 +15,7 @@ export default function productList(selector, category) {
 function productCardTemplate(product) {
     return `
     <li class="product-card">
-    <a href="${product.Id}">
+    <a href="product_pages/index.html?product=${product.Id}">
       <img
         src="${product.Image}"
         alt="Image of ${product.Name}"

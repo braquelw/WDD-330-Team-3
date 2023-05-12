@@ -17,7 +17,6 @@ export function getLocalStorage(key) {
     return Array.isArray(data) ? data : [data];
   } else {
     // If no data was retrieved, log an error message and return an empty array
-
     return [];
   }
 }
@@ -38,20 +37,20 @@ export function setClick(selector, callback) {
 export const getParam = (param) => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(param)
+  const product = urlParams.get(param);
   return product;
-}
+};
 
 export function renderListWithTemplate(
   templateFn,
   parentElement,
   list,
-  position = "afterbegin",
+  position = 'afterbegin',
   clear = true
 ) {
   if (clear) {
-    parentElement.innerHTML = "";
+    parentElement.innerHTML = '';
   }
   const htmlString = list.map(templateFn);
-  parentElement.insertAdjacentHTML(position, htmlString.join(""));
+  parentElement.insertAdjacentHTML(position, htmlString.join(''));
 }
