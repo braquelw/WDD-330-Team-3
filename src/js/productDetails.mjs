@@ -4,16 +4,17 @@ import { setLocalStorage, getLocalStorage } from './utils.mjs';
 let product = {};
 
 export default async function productsDetails(productId) {
-    product = await findProductById(productId);
-    console.log(product);
-    renderProductDetails();
-    document.querySelector('#addToCart').addEventListener('click', addProductToCart);
-};
+  product = await findProductById(productId);
+  console.log(product);
+  renderProductDetails();
+  document.querySelector('#addToCart').addEventListener('click', () => {
+    addProductToCart(product);
+  });
+}
 
 function addProductToCart(product) {
   // Retrieve the current cart items from local storage
   const cartItems = getLocalStorage('so-cart');
-
   // Check if there are any cart items
   if (cartItems.length) {
     // If there are already cart items, add the new product to the existing list
@@ -43,4 +44,3 @@ const renderProductDetails = () => {
   productDescription.innerHTML = product.DescriptionHtmlSimple;
   addToCart.dataset.id = product.Id;
 };
-
