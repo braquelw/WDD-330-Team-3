@@ -4,12 +4,16 @@ import { setLocalStorage, getLocalStorage } from './utils.mjs';
 let product = {};
 
 export default async function productsDetails(productId) {
-  product = await findProductById(productId);
-  console.log(product);
-  renderProductDetails();
-  document.querySelector('#addToCart').addEventListener('click', () => {
-    addProductToCart(product);
-  });
+  try {
+    product = await findProductById(productId);
+    renderProductDetails();
+    document.querySelector('#addToCart').addEventListener('click', () => {
+      addProductToCart(product);
+    });
+  } catch (error) {
+    console.log(error)
+    errOutcome();
+  }
 }
 
 function addProductToCart(product) {
@@ -43,4 +47,13 @@ const renderProductDetails = () => {
   productColor.innerHTML = product.Colors[0].ColorName;
   productDescription.innerHTML = product.DescriptionHtmlSimple;
   addToCart.dataset.id = product.Id;
+};
+
+function errOutcome() {
+  document.querySelector('#addToCart').classList.toggle('addBtn');
+  const productName = document.querySelector('#productNameWithoutBrand');
+  const errorMsg = document.createElement('p');
+  errorMsg.innerHTML = 'Product not found, Try with other';
+  errorMsg.style.textAlign = 'center';
+  productName.insertAdjacentElement('afterend', errorMsg);
 };

@@ -166,6 +166,10 @@ button {
   width: 100%;
 }
 
+.addBtn {
+  display: none;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
