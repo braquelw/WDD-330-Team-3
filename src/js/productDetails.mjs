@@ -23,7 +23,7 @@ function addProductToCart(product) {
   if (cartItems.length) {
     // If there are already cart items, add the new product to the existing list
     cartItems.push(product);
-    // Save the updated cart items to local storage
+    //  Save the updated cart items to local storage
     setLocalStorage('so-cart', cartItems);
   } else {
     // If there are no existing cart items, create a new array with the product and save it to local storage
